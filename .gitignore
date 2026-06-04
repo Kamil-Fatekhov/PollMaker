@@ -1,0 +1,6 @@
+venv-poll/
+__pycache__/
+*.pyc
+.idea/
+.env
+*.db
