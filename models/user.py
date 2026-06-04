@@ -1,3 +1,4 @@
+from __future__ import annotations
 from datetime import datetime
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from database import Base
@@ -9,5 +10,3 @@ class User(Base):
     username: Mapped[str]
     password_hash: Mapped[str]
     created_at: Mapped[datetime]
-    polls: Mapped[list["Poll"]] = relationship(back_populates="creator")
-    votes: Mapped[list["Vote"]] = relationship(back_populates="user")

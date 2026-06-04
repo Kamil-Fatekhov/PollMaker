@@ -1,3 +1,4 @@
+from __future__ import annotations
 from sqlalchemy import ForeignKey, UniqueConstraint
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from datetime import datetime
@@ -11,5 +12,3 @@ class Vote(Base):
     poll_id: Mapped[int] = mapped_column(ForeignKey("polls.id"))
     option_index: Mapped[int]
     created_at: Mapped[datetime]
-    user: Mapped["User"] = relationship(back_populates="votes")
-    poll: Mapped["Poll"] = relationship(back_populates="votes")

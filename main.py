@@ -1,4 +1,5 @@
-from models.user import UsersModel
+from models.user import User
+from routers.auth import router as auth_router
 from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from database import Base, engine
@@ -11,3 +12,4 @@ async def lifespan(app: FastAPI):
     print("Выключение сервера")
 
 app = FastAPI(lifespan=lifespan)
+app.include_router(auth_router)

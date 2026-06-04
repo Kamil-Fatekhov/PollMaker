@@ -1,3 +1,4 @@
+from __future__ import annotations
 from sqlalchemy import ForeignKey
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from database import Base
@@ -12,4 +13,3 @@ class Poll(Base):
     creator: Mapped["User"] = relationship(back_populates="polls")
     created_at: Mapped[datetime]
     is_closed: Mapped[bool] = mapped_column(default=False)
-    votes: Mapped[list["Vote"]] = relationship(back_populates="poll")
