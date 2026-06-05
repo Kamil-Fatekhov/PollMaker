@@ -1,4 +1,4 @@
-from models.user import User
+from routers import polls
 from routers.auth import router as auth_router
 from contextlib import asynccontextmanager
 from fastapi import FastAPI
@@ -13,3 +13,4 @@ async def lifespan(app: FastAPI):
 
 app = FastAPI(lifespan=lifespan)
 app.include_router(auth_router)
+app.include_router(polls.router)

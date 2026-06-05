@@ -7,7 +7,7 @@ from services.auth_service import register_user, authenticate_user, create_acces
 router = APIRouter()
 
 
-@router.post("/register", status_code=status.HTTP_201_CREATED)
+@router.post("/register", status_code=status.HTTP_201_CREATED, tags=["Регистрация"])
 def user_register(user: SUserCreate, session: SessionDep) -> SUserResponse | None:
     data = register_user(session, user)
     if data:
@@ -15,7 +15,7 @@ def user_register(user: SUserCreate, session: SessionDep) -> SUserResponse | Non
         return new_user
     raise fastapi.HTTPException(status_code=status.HTTP_409_CONFLICT, detail="Пользователь уже зарегистрирован")
 
-@router.post("/login")
+@router.post("/login", tags=["Регистрация"])
 def login_user(user: SUserLogin, session:SessionDep):
     data = authenticate_user(session, user)
     if data:
